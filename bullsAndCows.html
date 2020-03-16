@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>быки и коровы</title>
+</head>
+<body>
+	<script>
+		'use strict';
+		/* игра подразумевает, что пользователь действительно ввел целое четырехзначное число
+		без повторяющихся цифр */
+
+		/* функция генерирует случайное целое четырехзначное число*/
+		function randomFourDigitInteger(min, max) {
+			let randNum; //переменная для записи случайного числа
+			let arrNum; //массив для разбивки сгенерированного случайного числа
+			while (true) {
+				randNum = min + Math.random() * (max + 1 - min);
+				arrNum = String(randNum).split("");
+				/*проверяем, что все цифры в сгенерированном числе разные */
+				if (arrNum[0] != arrNum[1] && arrNum[0] != arrNum[2] && arrNum[0] != arrNum[3] && arrNum[1] != arrNum[2] && arrNum[1] != arrNum[3] && arrNum[2] != arrNum[3]) {
+						return Math.floor(randNum);
+				};
+			};
+		};
+
+		/* функция для подсчета угаданных цифр */
+		function countGuessNum () {
+			let arrSecretNum = String(secretNum).split(""); //массив для разбивки сгенерированного числа
+			let arrPlayerNum = String(playerNum).split(""); //массив для разбивки числа, введенного пользователем
+
+			let bulls = 0; // считаем быков
+			if (arrSecretNum[0] == arrPlayerNum[0]) {
+				bulls++;
+			};
+			if (arrSecretNum[1] == arrPlayerNum[1]) {
+				bulls++;
+			};
+			if (arrSecretNum[2] == arrPlayerNum[2]) {
+				bulls++;
+			};
+			if (arrSecretNum[3] == arrPlayerNum[3]) {
+				bulls++;
+			};
+
+			let cows = 0; //считаем коров
+			if (arrSecretNum.includes(arrPlayerNum[0])) {
+				cows++;
+			};
+			if (arrSecretNum.includes(arrPlayerNum[1])) {
+				cows++;
+			};
+			if (arrSecretNum.includes(arrPlayerNum[2])) {
+				cows++;
+			};
+			if (arrSecretNum.includes(arrPlayerNum[3])) {
+				cows++;
+			};
+
+			cows = cows - bulls; //так как в переменную cows считаются и bulls, отнимаем bulls от cows
+
+			/* подводим итоги */
+			if (bulls == 0 && cows == 0) { //если ничего не угадано
+				playerNum = Number (prompt ('Вы ничего не угадали, попробуйте еще раз:'));
+			} else if (bulls > 0 || cows > 0) { //если что-то угадано
+				alert (`Быков: ${bulls}, коров: ${cows}`); //выводим счет
+				playerNum = Number (prompt ('Попробуйте еще раз:')); //запрашиваем новое число
+			};
+		};
+
+		let secretNum = randomFourDigitInteger(1000, 9999); //переменная для сгенерированного числа
+		let playerNum = Number (prompt ('Угадайте 4-значное число с неповторяющимися цифрами:')); //переменная для числа, введенного пользователем
+
+		if (playerNum === 0) { //если игрок нажал "Отмена", заканчиваем игру
+			alert ('Игра окончена!');
+		} else if (playerNum === secretNum) { //если угадано, поздравляем и выходим из игры
+			alert ('Поздравляю! Вы угадали число!');
+		} else {
+			do {  //пока число не угадано или игрок не нажмет "Отмена", вызываем функцию countGuessNum
+				countGuessNum();
+			} while ((playerNum != secretNum) && (playerNum !== 0));
+		};
+
+	</script>
+</body>
+</html>
