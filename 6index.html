@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>задание6</title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+		function rle(value) {
+			let a = 0;
+			let b = '';
+		    for (let i = 0; i <= value.length; ++i) {
+		        if (value.charAt(i) == value.charAt(i + 1)) {
+		        	a++;
+		        } else {
+		            b += value.charAt(i) + (a ? a + 1 : '');
+		            a = 0;
+		        };
+		    };
+		    return b;
+		};
+
+		alert(rle('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD'));
+
+	</script>
+</body>
+</html>

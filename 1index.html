@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>задание1</title>
+</head>
+<body>
+	<script>
+		let prime = 2; // число
+        let primeArr = []; // массив, куда будут добавляться простые числа
+
+    	while (prime <= 100) { // цикл поиска простых чисел до 100
+        	let result = 2; // переменная для перебора чисел
+        	let i = 2; // делитель
+        	while (prime % i !== 0 ) { // ищем числа, которые при делении всегда дают остаток
+            	i++;
+            	result++;
+            	/* если находится число, которое не делится на 2, то переменные i и result увеличиваются на 1. Так будет происходить пока: либо prime поделится на i без остатка, либо result станет равным prime */
+        	};
+        	if (result == prime) { // когда result станет равным prime, добавляем его в массив
+            	primeArr.push(result);
+        	};
+        	prime++; // после каждой итерации добавляем к prime 1
+    	};
+
+    	console.log(primeArr);
+	</script>
+</body>
+</html>

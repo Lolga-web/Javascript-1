@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>задание2-3</title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+		let basket = [
+			{
+				productName: 'футболка',
+				price: 300,
+			},
+			{
+				productName: 'шорты',
+				price: 500,
+			},
+			{
+				productName: 'свитер',
+				price: 800,
+			},
+					];
+
+		let basketPrice = [];
+
+		basket.forEach (item => {
+			basketPrice.push(item.price);
+		});
+
+		function sum (a, b) {
+			return a + b;
+		};
+
+		let totalPrice = basketPrice.reduce (sum);
+
+		console.log (totalPrice);
+	</script>
+</body>
+</html>
