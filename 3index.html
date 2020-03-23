@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>задание3</title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+		function comparison (a, b) {
+			let result = false;
+			if (a === b) result = true;
+			if (typeof a === 'object' || typeof b === 'object') {
+				for (let key in a) {
+			    	if (a.hasOwnProperty(key)) {
+			      		if (b.hasOwnProperty(key)) {
+			        		if (typeof a[key] === 'object') {
+			          			if (!comparison(a[key], b[key])) return false;
+			        		} else {
+			          			if (a[key] !== b[key]) return false;
+			        		};
+			      		} else {
+			        		return false;
+			      		};
+			    	};
+				};
+			  	return true;
+			};
+			return result;
+		};
+
+		let a = {
+			name: 'Ann',
+			age: 30,
+			'favourite colors': ['red', 'blue']
+		};
+		let b = {
+			name: 'Ann',
+			age: 30,
+			'favourite colors': ['red', 'blue']
+		};
+
+		console.log (comparison (a, b));
+
+	</script>
+</body>
+</html>

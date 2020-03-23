@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>задание2</title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+		function Fruit (color, figure) {
+			this.color = color;
+			this.figure = figure;
+		};
+
+		Fruit.prototype.showFruit = function () {
+			console.log (this.color + ' ' + this.figure);
+		};
+
+		let apple = new Fruit ('зеленое', 'круглое');
+		apple.showFruit();
+
+		let banana = new Fruit ('желтый', 'длинный');
+		banana.showFruit();
+
+	</script>
+</body>
+</html>

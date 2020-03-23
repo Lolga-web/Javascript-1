@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>задание1</title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+		/* функция для подсчета единиц, десятков и сотен в числе */
+		function numInObject (num) {
+		    digit.units = Math.floor(num % 10);
+	        digit.tens = Math.floor(num / 10 % 10);
+	        digit.hundreds = Math.floor(num / 100 % 10);
+	        console.log (digit);
+		};
+
+		let digit = {
+		        units: 0,
+		        tens: 0,
+		        hundreds: 0,
+		    };
+
+		let num = prompt ('Введите целое число от 0 до 999');
+
+		/* проверка числа введенного пользователем */
+		if (num == null) {
+			console.log ('Выход');
+		} else {
+			num = parseFloat (num.replace(/[,]+/g, '.'));
+			if (!Number.isInteger(num) && parseInt(num)) {
+		    	console.log ('Вы ввели не целое число');
+		    	console.log (digit = {});
+		    } else if (0 <= num && num <= 999) {
+		        numInObject (num);
+		    } else if (0 > num || num > 999) {
+		        console.log('Вы ввели число вне диапазона 0 - 999');
+		        console.log (digit = {});
+		    } else {
+		    	console.log('Вы ввели не число');
+		    	console.log (digit = {});
+		    };
+		};
+
+	</script>
+</body>
+</html>
