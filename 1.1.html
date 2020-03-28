@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1.1</title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+		function getLinks () {
+			let linkList = document.querySelectorAll("#video-title-link");
+			let arr = [];
+			linkList.forEach(function(item) {
+				arr.push('https://youtube.com' + item.getAttribute('href'));
+			});
+			return(arr);
+		}
+		getLinks ();
+	</script>
+</body>
+</html>

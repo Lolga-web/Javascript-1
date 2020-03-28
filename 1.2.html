@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1.2</title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+		function getStudents () {
+			let studentList = document.querySelectorAll(".mates-list__mate-name-block");
+			let students = {};
+			studentList.forEach(function(item) {
+				students[item.innerText] = item.getAttribute('href');
+			});
+			return(students);
+		}
+		getStudents ();
+	</script>
+</body>
+</html>
